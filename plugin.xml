@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.enterra.com/ns/plugins/1.0" id="cordova-plugin-check-update" version="1.0.0">
+	<name>Check Update</name>
+	<description>Cordova Check Update Plugin</description>
+	<keywords>cordova,device</keywords>
+	<repo>https://github.com/mikola7092/cordova-plugin-check-update</repo>
+	<engines>
+		<engine name="cordova" version=">=5.0.0"/>
+	</engines>
+
+    <js-module src="www/checkupdate.js" name="checkupdate">
+        <clobbers target="cordova.checkupdate" />
+    </js-module>
+	
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CheckUpdate" >
+                <param name="android-package" value="com.enterra.checkupdate.CheckUpdate"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/CheckUpdate.java" target-dir="src/com/enterra/checkupdate" />
+    </platform>
+	
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="CheckUpdate">
+                <param name="ios-package" value="CDVCheckUpdate"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVCheckUpdate.h" />
+        <source-file src="src/ios/CDVCheckUpdate.m" />
+    </platform>
+</plugin>
